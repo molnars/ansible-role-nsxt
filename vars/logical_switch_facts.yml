@@ -1,0 +1,4 @@
+logical_switch_facts:
+  url: "/api/v1/logical-switches
+  method: GET
+  body: ""

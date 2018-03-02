@@ -1,0 +1,16 @@
+- name: "logical_switch_facts"
+  uri:
+    url: {{ provider.connection }}://{{ provider.host }}:{{ provider.port }}{{ logical_switch_facts[state].url }}
+    username: "{{ provider.username }}"
+    password: "{{ provider.password }}"
+    method: "{{ logical_switch_facts[state].method }}"
+    status_code: "{{ logical_switch_facts[state].code }}"
+    body_format: json
+    force_basic_auth: yes
+    return_content: yes
+    validate_certs: {{ validate_certs }}
+    body: "{{ logical_switch_facts[state].body | to_nice_json }}"
+  register: req_logical_switch_facts
+
+- set_fact:
+  logical_switch_facts: "{{ req_logical_switch_facts.result.json }}"
