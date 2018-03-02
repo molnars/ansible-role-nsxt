@@ -1,0 +1,10 @@
+---
+provider:
+  connection: "https"
+  host: "{{ ansible_host }}"
+  port: "{{ ansible_port }}"
+  username: "{{ ansible_user }}"
+  password: "{{ ansible_ssh_pass }}"
+
+validate_certs: no
+state: present

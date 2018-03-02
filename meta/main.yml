@@ -1,0 +1,15 @@
+---
+galaxy_info:
+  author: victorock
+  description: NSX-T Module
+  license: "license (GPL)"
+  min_ansible_version: 2.5
+  platforms:
+    - name: nsxt
+      versions:
+        - 2.1
+  galaxy_tags:
+    - nsx-t
+    - network
+
+dependencies: []

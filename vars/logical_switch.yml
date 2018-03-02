@@ -1,0 +1,27 @@
+logical_switch:
+  status:
+    url: "/api/v1/logical-switches/{{ id }}"
+    method: GET
+    code: 200
+    body: ""
+
+  absent:
+    url: "/api/v1/logical-switches/{{ id }}"
+    method: DELETE
+    code: 200
+    body: ""
+
+  present:
+    url: "/api/v1/logical-switches"
+    method: POST
+    code: 201
+    body:
+      resource_type: "LogicalSwitch"
+      transport_zone_id: "{{ transport_zone_id | default(mandatory) }}"
+      replication_mode: "{{ replication_mode | default('MTEP') }}"
+      admin_state: "{{ admin_state | default('UP') }}"
+      display_name: "{{ display_name | default(mandatory)}}"
+      ip_pool_id: "{{ ip_pool_id | default(omit) }}"
+      mac_pool_id: "{{ mac_pool_id | default(omit) }}"
+      switching_profile_ids: "{{ default(omit) }}"
+      vlan: "{{ vlan_id | default(omit) }}"

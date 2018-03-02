@@ -1,0 +1,1 @@
+localhost ansible_host=10.1.32.40 ansible_port=443 ansible_connection=local
