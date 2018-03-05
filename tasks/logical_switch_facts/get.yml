@@ -1,0 +1,16 @@
+- name: "logical_switch_facts"
+  uri:
+    url: "{{ provider.connection }}://{{ provider.host }}:{{ provider.port }}/api/v1/logical-switch/{{ id }}"
+    username: "{{ provider.username }}"
+    password: "{{ provider.password }}"
+    method: GET
+    status_code: 200
+    body_format: json
+    force_basic_auth: yes
+    return_content: yes
+    validate_certs: {{ validate_certs }}
+    body: {}
+  register: r_logical_switch_facts
+
+- set_facts:
+    logical_switch_facts: "{{ r_logical_switch_get.result.json | default({}) }}"
