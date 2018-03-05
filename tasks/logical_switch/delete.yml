@@ -1,0 +1,14 @@
+- name: "logical_switch_delete"
+  uri:
+    url: "{{ provider.connection }}://{{ provider.host }}:{{ provider.port }}/api/v1/logical-switches/{{ id }}"
+    username: "{{ provider.username }}"
+    password: "{{ provider.password }}"
+    method: DELETE
+    status_code: 200
+    body_format: json
+    force_basic_auth: yes
+    return_content: yes
+    validate_certs: {{ validate_certs }}
+    body: {}
+  register: r_logical_switch_delete
+  when: LogicalSwitchEntryExists is defined

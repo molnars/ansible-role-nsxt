@@ -1,20 +1,8 @@
-logical_switch:
-  status:
-    url: "/api/v1/logical-switches/{{ id }}"
-    method: GET
-    code: 200
-    body: ""
-
+logical_switch_state_dict:
   absent:
-    url: "/api/v1/logical-switches/{{ id }}"
-    method: DELETE
-    code: 200
-    body: ""
+    body: {}
 
   present:
-    url: "/api/v1/logical-switches"
-    method: POST
-    code: 201
     body:
       resource_type: "LogicalSwitch"
       transport_zone_id: "{{ transport_zone_id | default(mandatory) }}"

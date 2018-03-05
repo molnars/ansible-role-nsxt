@@ -1,0 +1,14 @@
+- name: "logical_switch_post"
+  uri:
+    url: "{{ provider.connection }}://{{ provider.host }}:{{ provider.port }}/api/v1/logical-switches"
+    username: "{{ provider.username }}"
+    password: "{{ provider.password }}"
+    method: POST
+    status_code: 201
+    body_format: json
+    force_basic_auth: yes
+    return_content: yes
+    validate_certs: {{ validate_certs }}
+    body: "{{ logical_switch_state_dict[state].body | to_nice_json }}"
+  register: r_logical_switch_post
+  when: EntryExists is not defined
